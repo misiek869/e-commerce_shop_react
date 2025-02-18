@@ -1,7 +1,12 @@
-import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const HomeLayoutPage = () => {
-	return <div>HomeLayoutPage</div>
+	return (
+		<>
+			<div>HomeLayoutPage</div>
+			<Outlet />
+		</>
+	)
 }
 
 export default HomeLayoutPage
