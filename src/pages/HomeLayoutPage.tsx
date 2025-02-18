@@ -4,7 +4,9 @@ const HomeLayoutPage = () => {
 	return (
 		<>
 			<div>HomeLayoutPage</div>
-			<Outlet />
+			<section className='align-element py-20'>
+				<Outlet />
+			</section>
 		</>
 	)
 }
