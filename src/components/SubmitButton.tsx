@@ -7,7 +7,7 @@ const SubmitButton = ({ text }: { text: string }) => {
 	const isSubmitting = navigation.state === 'submitting'
 
 	return (
-		<button className='btn btn-primary' disabled={isSubmitting}>
+		<button className='btn btn-primary rounded-sm' disabled={isSubmitting}>
 			{isSubmitting ? (
 				<>
 					<span className='loading loading-ring loading-md'></span>

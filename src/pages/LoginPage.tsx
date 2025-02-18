@@ -35,15 +35,17 @@ const LoginPage = () => {
 				<h4 className='text-center text-3xl font-semibold'>Login</h4>
 				<FormInput
 					type='email'
-					icon={<EmailIcon />} // Użyj komponentu SVG
+					icon={<EmailIcon />}
 					name='email'
 					defaultValue='test@test.com'
+					placeholder='Email'
 				/>
 				<FormInput
 					type='password'
-					icon={<PasswordIcon />} // Użyj komponentu SVG
+					icon={<PasswordIcon />}
 					name='password'
 					defaultValue='1234'
+					placeholder='Password'
 				/>
 				<div className='flex flex-col mt-4'>
 					<SubmitButton text='login' />
