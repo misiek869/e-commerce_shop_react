@@ -12,8 +12,57 @@ import {
 	SingleProductPage,
 } from './pages'
 
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+
 const App = () => {
-	return <h1 className='bg-red-500'>app</h1>
+	const router = createBrowserRouter([
+		{
+			path: '/',
+			element: <HomeLayoutPage />,
+			errorElement: <ErrorPage />,
+			children: [
+				{
+					index: true,
+					element: <LandingPage />,
+					errorElement: <ErrorPage />,
+				},
+				{ path: 'about', element: <AboutPage />, errorElement: <ErrorPage /> },
+				{
+					path: 'cart',
+					element: <CartPage />,
+					errorElement: <ErrorPage />,
+				},
+				{
+					path: 'checkout',
+					element: <CheckoutPage />,
+					errorElement: <ErrorPage />,
+				},
+				{
+					path: 'orders',
+					element: <OrdersPage />,
+					errorElement: <ErrorPage />,
+				},
+				{
+					path: 'products',
+					element: <ProductsPage />,
+					errorElement: <ErrorPage />,
+				},
+				{
+					path: 'products/:id',
+					element: <SingleProductPage />,
+					errorElement: <ErrorPage />,
+				},
+			],
+		},
+		{ path: '/login', element: <LoginPage />, errorElement: <ErrorPage /> },
+		{
+			path: '/register',
+			element: <RegisterPage />,
+			errorElement: <ErrorPage />,
+		},
+	])
+
+	return <RouterProvider router={router} />
 }
 
 export default App
