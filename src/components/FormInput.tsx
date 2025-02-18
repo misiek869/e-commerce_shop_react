@@ -5,9 +5,16 @@ type FormInputProps = {
 	type: string
 	icon: React.ReactNode
 	name: string
+	placeholder?: string
 }
 
-const FormInput = ({ icon, defaultValue, type, name }: FormInputProps) => {
+const FormInput = ({
+	icon,
+	defaultValue,
+	type,
+	name,
+	placeholder,
+}: FormInputProps) => {
 	return (
 		<div className='form-control'>
 			<label className='input input-bordered flex items-center gap-2 rounded-sm'>
@@ -18,6 +25,7 @@ const FormInput = ({ icon, defaultValue, type, name }: FormInputProps) => {
 					className='grow'
 					name={name}
 					defaultValue={defaultValue}
+					placeholder={placeholder}
 				/>
 			</label>
 		</div>
