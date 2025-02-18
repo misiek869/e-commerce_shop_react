@@ -2,8 +2,14 @@ import { Link, useRouteError } from 'react-router-dom'
 import img from '../assets/404.svg'
 import error from '../assets/error.svg'
 
+interface RouteError {
+	status: number
+	message?: string
+	// data?: any
+}
+
 const ErrorPage = () => {
-	const error = useRouteError()
+	const error: RouteError = useRouteError() as RouteError // Typowanie błędu
 	if (error.status === 404) {
 		return (
 			<main className='grid min-h-[50vh] place-items-center px-10'>
