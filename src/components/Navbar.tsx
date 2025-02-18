@@ -2,14 +2,30 @@ import { CiShoppingCart, CiSun, CiCloudMoon } from 'react-icons/ci'
 import { HiMiniBars3BottomRight } from 'react-icons/hi2'
 import { NavLink } from 'react-router-dom'
 import NavLinks from './NavLinks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+const themes = {
+	light: 'bumblebee',
+	dark: 'dim',
+}
+
+const getTheme = (): string => {
+	return localStorage.getItem('theme') || themes.light
+}
 
 const Navbar = () => {
-	const [theme, setTheme] = useState<boolean>(false)
+	const [theme, setTheme] = useState<string>(getTheme())
 
 	const handleTheme = (): void => {
-		setTheme(!theme)
+		const { light, dark } = themes
+		const newTheme = theme === light ? dark : light
+		setTheme(newTheme)
 	}
+
+	useEffect(() => {
+		document.documentElement.setAttribute('data-theme', theme)
+		localStorage.setItem('theme', theme)
+	}, [theme])
 
 	return (
 		<nav className='bg-zinc-700 text-slate-100'>
@@ -41,7 +57,7 @@ const Navbar = () => {
 						<input
 							type='checkbox'
 							onChange={handleTheme}
-							className='theme-controller'
+							// className='theme-controller'
 						/>
 						<CiSun className='swap-on w-8 h-8' />
 						<CiCloudMoon className='swap-off w-8 h-8' />
