@@ -1,9 +1,27 @@
 import { Link } from 'react-router-dom'
-import hero_1 from '../assets/h1.jpg'
-import hero_2 from '../assets/h2.jpg'
-import hero_3 from '../assets/h3.jpg'
+import hero1 from '../assets/h1.jpg'
+import hero2 from '../assets/h2.jpg'
+import hero3 from '../assets/h3.jpg'
 
-const carouselImages: string[] = [hero_2, hero_3, hero_1]
+type carouselImage = {
+	id: number
+	img: string
+}
+
+const carouselImages: carouselImage[] = [
+	{
+		id: 0,
+		img: hero1,
+	},
+	{
+		id: 1,
+		img: hero2,
+	},
+	{
+		id: 2,
+		img: hero3,
+	},
+]
 
 const Hero = () => {
 	return (
@@ -25,13 +43,26 @@ const Hero = () => {
 				</div>
 			</div>
 			<div className='hidden h-[28rem] lg:carousel carousel-center p-4 space-x-4 bg-neutral rounded-sm'>
-				{carouselImages.map((image, index) => {
+				{carouselImages.map(image => {
 					return (
-						<div key={index} className='carousel-item'>
+						<div
+							key={image.id}
+							id={image.id}
+							className='carousel-item relative w-full'>
 							<img
-								src={image}
-								className='rounded-sm h-full w-80 object-cover'
+								src={image.img}
+								alt='Produto'
+								className='rounded-sm h-full w-96 mx-auto object-cover'
 							/>
+
+							<div className='absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between'>
+								<a href={`#${(image.id + 3) % 4}`} className='btn btn-circle'>
+									❮
+								</a>
+								<a href={`#${(image.id + 1) % 4}`} className='btn btn-circle'>
+									❯
+								</a>
+							</div>
 						</div>
 					)
 				})}
