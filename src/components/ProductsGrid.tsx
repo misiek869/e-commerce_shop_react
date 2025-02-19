@@ -8,6 +8,7 @@ const ProductsGrid = () => {
 		<div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
 			{products.map(product => {
 				const { name, price, image, id } = product
+				
 
 				const formattedPrice = formatPrice(price)
 
