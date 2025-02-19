@@ -8,7 +8,6 @@ import ErrorElement from './ErrorElement'
 import SectionTitle from './SectionTitle'
 import ProductsGrid from './ProductsGrid'
 import FeaturedProducts from './FeaturedProducts'
-import SingleProduct from './SingleProduct'
 
 export {
 	FormInput,
@@ -21,5 +20,4 @@ export {
 	SectionTitle,
 	ProductsGrid,
 	FeaturedProducts,
-	SingleProduct,
 }
