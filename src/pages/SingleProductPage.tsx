@@ -16,6 +16,7 @@ const SingleProductPage = () => {
 	const product = useLoaderData()
 
 	const { image, name, description, colors, company, price } = product
+	// const colors: string[] = ['red', 'green', 'blue'];
 
 	const dollarsPrice = formatPrice(price)
 
@@ -47,6 +48,24 @@ const SingleProductPage = () => {
 					</h4>
 					<p className='mt-3 text-xl'>{dollarsPrice}</p>
 					<p className='mt-6 leading-loose'>{description}</p>
+
+					<div className='mt-6'>
+						<h4 className='text-md font-medium tracking-wider'>Colors</h4>
+						<div className='mt-2'>
+							{colors.map(color => {
+								return (
+									<button
+										key={color}
+										type='button'
+										className={`badge w-6 h-6 mr-2 ${
+											color === productColor && 'border-2 border-warning'
+										}`}
+										style={{ backgroundColor: color }}
+										onClick={() => setProductColor(color)}></button>
+								)
+							})}
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
