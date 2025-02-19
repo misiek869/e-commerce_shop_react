@@ -12,56 +12,62 @@ import {
 	SingleProductPage,
 } from './pages'
 
+import { ErrorElement } from './components'
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-const App = () => {
-	const router = createBrowserRouter([
-		{
-			path: '/',
-			element: <HomeLayoutPage />,
-			errorElement: <ErrorPage />,
-			children: [
-				{
-					index: true,
-					element: <LandingPage />,
-					errorElement: <ErrorPage />,
-				},
-				{ path: 'about', element: <AboutPage />, errorElement: <ErrorPage /> },
-				{
-					path: 'cart',
-					element: <CartPage />,
-					errorElement: <ErrorPage />,
-				},
-				{
-					path: 'checkout',
-					element: <CheckoutPage />,
-					errorElement: <ErrorPage />,
-				},
-				{
-					path: 'orders',
-					element: <OrdersPage />,
-					errorElement: <ErrorPage />,
-				},
-				{
-					path: 'products',
-					element: <ProductsPage />,
-					errorElement: <ErrorPage />,
-				},
-				{
-					path: 'products/:id',
-					element: <SingleProductPage />,
-					errorElement: <ErrorPage />,
-				},
-			],
-		},
-		{ path: '/login', element: <LoginPage />, errorElement: <ErrorPage /> },
-		{
-			path: '/register',
-			element: <RegisterPage />,
-			errorElement: <ErrorPage />,
-		},
-	])
+// --------- loaders ---------- //
+import { loader as landingLoader } from './pages/LandingPage'
 
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <HomeLayoutPage />,
+		errorElement: <ErrorPage />,
+		children: [
+			{
+				index: true,
+				element: <LandingPage />,
+				errorElement: <ErrorElement />,
+				loader: landingLoader,
+			},
+			{ path: 'about', element: <AboutPage />, errorElement: <ErrorPage /> },
+			{
+				path: 'cart',
+				element: <CartPage />,
+				errorElement: <ErrorPage />,
+			},
+			{
+				path: 'checkout',
+				element: <CheckoutPage />,
+				errorElement: <ErrorPage />,
+			},
+			{
+				path: 'orders',
+				element: <OrdersPage />,
+				errorElement: <ErrorPage />,
+			},
+			{
+				path: 'products',
+				element: <ProductsPage />,
+				errorElement: <ErrorPage />,
+			},
+			{
+				path: 'products/:id',
+				element: <SingleProductPage />,
+				errorElement: <ErrorPage />,
+			},
+		],
+	},
+	{ path: '/login', element: <LoginPage />, errorElement: <ErrorPage /> },
+	{
+		path: '/register',
+		element: <RegisterPage />,
+		errorElement: <ErrorPage />,
+	},
+])
+
+const App = () => {
 	return <RouterProvider router={router} />
 }
 
