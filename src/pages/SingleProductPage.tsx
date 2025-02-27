@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom'
-import { customFetch } from '../utils'
+import { customFetch, generateAmountOptions } from '../utils'
 import { formatPrice } from '../utils/formatPrice'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
@@ -83,9 +83,7 @@ const SingleProductPage = () => {
 							className='select select-secondary select-bordered select-md border-warning'
 							value={amount}
 							onChange={handleAmount}>
-							<option value={1}>1</option>
-							<option value={2}>2</option>
-							<option value={3}>3</option>
+							{generateAmountOptions(5)}
 						</select>
 					</div>
 
