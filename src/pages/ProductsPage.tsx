@@ -8,7 +8,13 @@ export const loader = async () => {
 }
 
 const ProductsPage = () => {
-	return <div>ProductsPage</div>
+	return (
+		<>
+			<Filters />
+			<ProductsContainer />
+			<PaginationContainer />
+		</>
+	)
 }
 
 export default ProductsPage
