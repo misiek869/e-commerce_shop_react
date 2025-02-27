@@ -23,6 +23,10 @@ const SingleProductPage = () => {
 	const [productColor, setProductColor] = useState<string>(colors[0])
 	const [amount, setAmount] = useState<number>(1)
 
+	const handleAmount = e => {
+		setAmount(Number(e.target.value))
+	}
+
 	return (
 		<section className=''>
 			<div className='text-md breadcrumbs'>
@@ -65,6 +69,32 @@ const SingleProductPage = () => {
 								)
 							})}
 						</div>
+					</div>
+
+					<div className='form-control w-full max-w-xs'>
+						<label htmlFor='amount' className='label'>
+							<h4 className='text-md font-medium tracking-wider capitalize'>
+								amount
+							</h4>
+						</label>
+						<select
+							name='amount'
+							id='amount'
+							className='select select-secondary select-bordered select-md border-warning'
+							value={amount}
+							onChange={handleAmount}>
+							<option value={1}>1</option>
+							<option value={2}>2</option>
+							<option value={3}>3</option>
+						</select>
+					</div>
+
+					<div className='mt-10'>
+						<button
+							className='btn btn-warning btn-md uppercase'
+							onClick={() => console.log('added')}>
+							Add To Bag
+						</button>
 					</div>
 				</div>
 			</div>
