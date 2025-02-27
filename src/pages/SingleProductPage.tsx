@@ -24,7 +24,7 @@ const SingleProductPage = () => {
 	const [amount, setAmount] = useState<number>(1)
 
 	return (
-		<section>
+		<section className=''>
 			<div className='text-md breadcrumbs'>
 				<ul>
 					<li>
@@ -35,7 +35,7 @@ const SingleProductPage = () => {
 					</li>
 				</ul>
 			</div>
-			<div className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16'>
+			<div className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16 border-b pb-4'>
 				<img
 					src={image}
 					alt={name}
@@ -49,7 +49,7 @@ const SingleProductPage = () => {
 					<p className='mt-3 text-xl'>{dollarsPrice}</p>
 					<p className='mt-6 leading-loose'>{description}</p>
 
-					<div className='mt-6'>
+					<div className='mt-12'>
 						<h4 className='text-md font-medium tracking-wider'>Colors</h4>
 						<div className='mt-2'>
 							{colors.map(color => {
