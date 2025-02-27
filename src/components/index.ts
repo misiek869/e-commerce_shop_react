@@ -8,6 +8,9 @@ import ErrorElement from './ErrorElement'
 import SectionTitle from './SectionTitle'
 import ProductsGrid from './ProductsGrid'
 import FeaturedProducts from './FeaturedProducts'
+import ProductsContainer from './ProductsContainer'
+import PaginationContainer from './PaginationContainer'
+import Filters from './Filters'
 
 export {
 	FormInput,
@@ -20,4 +23,7 @@ export {
 	SectionTitle,
 	ProductsGrid,
 	FeaturedProducts,
+	ProductsContainer,
+	PaginationContainer,
+	Filters,
 }
