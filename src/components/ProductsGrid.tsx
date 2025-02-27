@@ -15,7 +15,7 @@ const ProductsGrid = () => {
 					<Link
 						key={id}
 						to={`/products/${id}`}
-						className='card shadow-md w-full hover:shadow-xl transition duration-300'>
+						className='card bg-gray-700 rounded-sm shadow-md w-full hover:shadow-xl transition duration-300'>
 						<figure className='px-4 pt-4'>
 							<img
 								src={image}
@@ -25,7 +25,7 @@ const ProductsGrid = () => {
 						</figure>
 						<div className='card-body items-center text-center'>
 							<h2 className='card-title capitalize tracking-wider'>{name}</h2>
-							<span className='text-secondary'>{formattedPrice}</span>
+							<span className='text-warning '>{formattedPrice}</span>
 						</div>
 					</Link>
 				)
