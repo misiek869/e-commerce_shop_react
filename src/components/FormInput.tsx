@@ -3,31 +3,34 @@ import React from 'react'
 type FormInputProps = {
 	defaultValue?: string
 	type: string
-	icon: React.ReactNode
+	// icon?: React.ReactNode
+	label: string
 	name: string
 	placeholder?: string
+	size?: string
 }
 
 const FormInput = ({
-	icon,
+	// icon,
 	defaultValue,
 	type,
 	name,
 	placeholder,
+	size,
+	label,
 }: FormInputProps) => {
 	return (
 		<div className='form-control'>
-			<label className='input input-bordered flex items-center gap-2 rounded-sm'>
-				{icon}
-
-				<input
-					type={type}
-					className='grow'
-					name={name}
-					defaultValue={defaultValue}
-					placeholder={placeholder}
-				/>
+			<label className='label rounded-sm'>
+				<span className='label-text capitalize'>{label}</span>
 			</label>
+			<input
+				type={type}
+				className={`${size} input input-bordered rounded-sm`}
+				name={name}
+				defaultValue={defaultValue}
+				placeholder={placeholder}
+			/>
 		</div>
 	)
 }
