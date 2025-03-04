@@ -2,6 +2,7 @@ import { Form, Link, useLoaderData } from 'react-router-dom'
 import FormInput from './FormInput'
 import FormSelect from './FormSelect'
 import FormRange from './FormRange'
+import FormCheckbox from './FormCheckbox'
 
 const Filters = () => {
 	const products = useLoaderData()
@@ -38,10 +39,16 @@ const Filters = () => {
 				list={['a-z', 'z-a', 'highest price', 'lowest price']}
 			/>
 			<FormRange label='price' name='price' size='range-sm' />
+			<FormCheckbox
+				label='free shipping'
+				name='shipping'
+				size='checkbox-sm'
+				defaultValue={true}
+			/>
 			<button className='btn btn-warning btn-sm rounded-sm' type='submit'>
 				Search
 			</button>
-			<Link className='btn rounded-sm btn-sm btn-primary' to={'/products'}>
+			<Link className='btn rounded-sm btn-sm btn-error' to={'/products'}>
 				Reset
 			</Link>
 		</Form>
