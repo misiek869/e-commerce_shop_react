@@ -12,6 +12,7 @@ import ProductsContainer from './ProductsContainer'
 import PaginationContainer from './PaginationContainer'
 import Filters from './Filters'
 import ProductsList from './ProductsList'
+import Loading from './Loading'
 
 export {
 	FormInput,
@@ -28,4 +29,5 @@ export {
 	PaginationContainer,
 	Filters,
 	ProductsList,
+	Loading,
 }
