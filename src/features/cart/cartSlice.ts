@@ -33,7 +33,7 @@ const cartSLice = createSlice({
 
 			state.numItemsInCart += product.amount
 			state.cartTotal += product.price * product.amount
-			cartSLice.caseReducers.calculateTotal()
+			cartSLice.caseReducers.calculateTotal(state)
 		},
 
 		removeItem: state => {},
