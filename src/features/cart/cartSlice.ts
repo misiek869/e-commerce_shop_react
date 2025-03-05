@@ -36,9 +36,43 @@ const cartSLice = createSlice({
 			cartSLice.caseReducers.calculateTotal(state)
 		},
 
-		removeItem: state => {},
-		editItem: (state, action) => {},
-		clearCart: state => {},
+		removeItem: (state, action) => {
+			const { product } = action.payload
+
+			const item = state.cartItems.find(
+				(item: ProductType) => item.cartID === product.cartID
+			)
+
+			state.cartItems.filter(
+				(item: ProductType) => item.cartID !== product.cartID
+			)
+
+			state.numItemsInCart -= product.amount
+			state.cartTotal -= product.price * product.amount
+
+			cartSLice.caseReducers.calculateTotal(state)
+			toast.warning('Item removed')
+		},
+
+		editItem: (state, action) => {
+			const { cartID, amount } = action.payload
+
+			const item = state.cartItems.find(
+				(item: ProductType) => item.cartID === cartID
+			)
+
+			state.numItemsInCart += amount - item.amount
+			state.cartTotal += item.price * (amount - item.amount)
+			item.amount = amount
+			cartSLice.caseReducers.calculateTotal(state)
+			toast.success('Item updated')
+		},
+
+		clearCart: () => {
+			localStorage.setItem('cart', JSON.stringify(defaultState))
+			return defaultState
+		},
+
 		calculateTotal: state => {
 			state.tax = 0.23 * state.cartTotal
 			state.orderTotal = state.cartTotal + state.shipping + state.tax
