@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
+import { Product as ProductType } from '../../types/Product'
 
 const defaultState = {
-	cartItems: [],
+	cartItems: [] as ProductType[],
 	numItemsInCart: 0,
 	cartTotal: 0,
 	shipping: 500,
@@ -10,17 +11,42 @@ const defaultState = {
 	orderTotal: 0,
 }
 
+const getLocalStorage = () => {
+	const cart = localStorage.getItem('cart') || JSON.stringify(defaultState)
+	return JSON.parse(cart)
+}
+
 const cartSLice = createSlice({
 	name: 'cart',
-	initialState: defaultState,
+	initialState: getLocalStorage(),
 	reducers: {
 		addItem: (state, action) => {
-			console.log(action.payload)
+			const { product } = action.payload
+			const item = state.cartItems.find(
+				(item: ProductType) => item.cartID === product.cartID
+			)
+			if (item) {
+				item.amount += product.amount
+			} else {
+				state.cartItems.push(product)
+			}
+
+			state.numItemsInCart += product.amount
+			state.cartTotal += product.price * product.amount
+			cartSLice.caseReducers.calculateTotal()
 		},
 
 		removeItem: state => {},
 		editItem: (state, action) => {},
 		clearCart: state => {},
+		calculateTotal: state => {
+			state.tax = 0.23 * state.cartTotal
+			state.orderTotal = state.cartTotal + state.shipping + state.tax
+
+			localStorage.setItem('cart', JSON.stringify(state))
+			toast.success('Item added to the Cart')
+			console.log(state)
+		},
 	},
 })
 

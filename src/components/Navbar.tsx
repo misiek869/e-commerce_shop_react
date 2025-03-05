@@ -3,6 +3,7 @@ import { HiMiniBars3BottomRight } from 'react-icons/hi2'
 import { NavLink } from 'react-router-dom'
 import NavLinks from './NavLinks'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const themes = {
 	light: 'bumblebee',
@@ -26,6 +27,8 @@ const Navbar = () => {
 		document.documentElement.setAttribute('data-theme', theme)
 		localStorage.setItem('theme', theme)
 	}, [theme])
+
+	const itemsInCart = useSelector(state => state.cartState.numItemsInCart)
 
 	return (
 		<nav className='bg-zinc-700 text-slate-100'>
@@ -68,7 +71,7 @@ const Navbar = () => {
 						<div className='indicator'>
 							<CiShoppingCart className='w-6 h-6' />
 							<span className='badge badge-sm badge-warning indicator-item'>
-								2
+								{itemsInCart}
 							</span>
 						</div>
 					</NavLink>
