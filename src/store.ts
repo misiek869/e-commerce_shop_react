@@ -6,3 +6,5 @@ export const store = configureStore({
 		cartState: cartReducer,
 	},
 })
+
+export type RootState = ReturnType<typeof store.getState>

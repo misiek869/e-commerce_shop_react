@@ -1,5 +1,5 @@
 export type Product = {
-	cartID: string
+	cartID?: string
 	productID: string
 	image: string
 	amount: number
